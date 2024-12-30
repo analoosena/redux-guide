@@ -19,6 +19,17 @@ export const CartContainer = styled.div`
     color: #222222;
   }
 `;
+export const CartPriceContainer = styled.div `
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  border-top: 2px solid #2222;
+  p{
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 15px;
+  }
+`
 
 export const CartEscapeArea = styled.div`
   width: 100%;

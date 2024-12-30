@@ -9,6 +9,7 @@ import * as Styles from "./styles";
 
 // Utilities
 import { loginUser, logoutUser } from "../../redux/user/actions";
+import { selectProductsCount } from "../../redux/cart/cart.selectors";
 
 function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -19,6 +20,8 @@ function Header() {
 //Permite acessar diretamente partes do estado global.
 //Retorna o usuário atualmente logado, permitindo que o componente ajuste sua interface de acordo.
   const { currentUser } = useSelector((state) => state.userReducer);
+
+  const productsCount = useSelector(selectProductsCount)
 
   const handleCartClick = () => {
     setCartIsVisible(true);
@@ -43,7 +46,7 @@ function Header() {
           <div onClick={handleLoginClick}>Login</div>
         )}
 
-        <div onClick={handleCartClick}>Carrinho</div>
+        <div onClick={handleCartClick}>Carrinho ({productsCount}) </div>
       </Styles.Buttons>
 
       <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
