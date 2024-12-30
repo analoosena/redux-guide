@@ -13,18 +13,22 @@ import { loginUser, logoutUser } from "../../redux/user/actions";
 function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
-  const dispatch = useDispatch();
+//Aqui, o dispatch é armazenado em uma variável para ser usado posteriormente.
+  const dispatch = useDispatch(); 
 
+//Permite acessar diretamente partes do estado global.
+//Retorna o usuário atualmente logado, permitindo que o componente ajuste sua interface de acordo.
   const { currentUser } = useSelector((state) => state.userReducer);
 
   const handleCartClick = () => {
     setCartIsVisible(true);
   };
-
+//Ação que envia um payload com os dados do usuário para o store e atualiza o estado no reducer.
   const handleLoginClick = () => {
     dispatch(loginUser({ name: "Felipe Rocha", email: "felipe@rocha.com" }));
   };
 
+//Ação que redefine o usuário como null no estado global.
   const handleLogoutClick = () => {
     dispatch(logoutUser());
   };
